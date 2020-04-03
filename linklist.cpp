@@ -15,18 +15,26 @@ void display() {
    struct Node* ptr;
    ptr = head;
    while (ptr != NULL) { 
-      cout<< ptr->data <<" "; 
+      cout<< ptr->data <<"\t"; 
       ptr = ptr->next; 
    } 
 } 
 int main() { 
-   insert(3);
-   insert(1);
-   insert(7);
-   insert(2);
-   insert(9);
+   int n;
+   cout<<"Enter Length of linklist"<<"\n";
+   cin>>n;
+   int i[n];
+   for(int x = 0; x<n; x++){
+      cout<<"Enter a number to insert\n";
+      cin>>i[x];
+      insert(i[x]);
+   }
+   // insert(3);
+   // insert(1);
+   // insert(7);
+   // insert(2);
+   // insert(9);
    cout<<"The linked list is: ";
-   cout<<"HOGUYA JI";
    display(); 
    return 0; 
 } 
