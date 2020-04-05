@@ -8,7 +8,7 @@
                 "-g",
                 "${workspaceFolder}\\*.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileDirname}.exe"
             ],
             "options": {
                 "cwd": "C:\\MinGW\\bin"
@@ -22,7 +22,7 @@
                 "-g",
                 "${workspaceFolder}\\*.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileDirname}.exe"
             ],
             "options": {
                 "cwd": "C:\\MinGW\\bin"
@@ -40,7 +40,7 @@
                 "-g",
                 "${workspaceFolder}\\*.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileDirname}.exe"
             ],
             "options": {
                 "cwd": "C:\\MinGW\\bin"

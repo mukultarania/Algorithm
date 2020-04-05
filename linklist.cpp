@@ -51,8 +51,5 @@ int main() {
       cin>>i[x];
       insert(i[x]);
    }
-   // insert(3);
-   // insert(1);
-   // insert(7);
    return 0; 
 } 
