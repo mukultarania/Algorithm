@@ -14,24 +14,6 @@ void insert(int new_data) {
     cout<<"The linked list is: ";
    display();
 } 
-// void insert_at(int new_data, int n) { 
-//    struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
-//    new_node->data = new_data; 
-//    new_node->next = NULL; 
-//    if(n==1){
-//       new_node->next = head;
-//       head = new_node;
-//       return;
-//    } 
-//    struct Node* temp2 = (struct Node*) malloc(sizeof(struct Node)); 
-//    for(int i =0; i<=n-2; i++){
-//       temp2 = temp2->next;
-//    }
-//    new_node->next = temp2->next;
-//    temp2->next = new_node;
-//     cout<<"The linked list is: ";
-//    display();
-// } 
 void display() { 
    struct Node* ptr;
    ptr = head;
@@ -42,14 +24,11 @@ void display() {
    cout<<"\n";
 } 
 int main() { 
-   int n;
-   cout<<"Enter Length of linklist"<<"\n";
-   cin>>n;
-   int i[n];
-   for(int x = 0; x<n; x++){
-      cout<<"Enter a number to insert\n";
-      cin>>i[x];
-      insert(i[x]);
-   }
+   insert(1);
+   insert(1);
+   insert(1);
+   insert(1);
+   insert(1);
+   insert(1);
    return 0; 
 } 

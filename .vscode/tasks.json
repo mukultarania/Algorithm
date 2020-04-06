@@ -1,58 +1,26 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:\\MinGW\\bin\\g++.exe",
+            "label": "cl.exe build active file",
+            "command": "cl.exe",
             "args": [
-                "-g",
-                "${workspaceFolder}\\*.cpp",
-                "-o",
-                "${fileDirname}\\${fileDirname}.exe"
+                "/Zi",
+                "/EHsc",
+                "/Fe:",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${file}"
             ],
-            "options": {
-                "cwd": "C:\\MinGW\\bin"
-            }
-        },
-        {
-            "type": "shell",
-            "label": "cpp.exe build active file",
-            "command": "C:\\MinGW\\bin\\cpp.exe",
-            "args": [
-                "-g",
-                "${workspaceFolder}\\*.cpp",
-                "-o",
-                "${fileDirname}\\${fileDirname}.exe"
-            ],
-            "options": {
-                "cwd": "C:\\MinGW\\bin"
-            },
             "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:\\MinGW\\bin\\g++.exe",
-            "args": [
-                "-g",
-                "${workspaceFolder}\\*.cpp",
-                "-o",
-                "${fileDirname}\\${fileDirname}.exe"
-            ],
-            "options": {
-                "cwd": "C:\\MinGW\\bin"
-            },
-            "problemMatcher": [
-                "$gcc"
+                "$msCompile"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
