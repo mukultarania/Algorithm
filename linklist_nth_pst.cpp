@@ -5,41 +5,42 @@ struct Node
    int data;
    Node* link;
 };
-struct Node* head;
+struct Node* head = NULL;;
 void insert(int new_data, int n) { 
-   struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
-   new_node->data = new_data; 
-   new_node->link = NULL; 
-   if(n==1){
-      new_node->link = head;
-      head = new_node;
+    
+   Node* temp1 = new Node();
+   temp1->data = new_data; 
+   temp1->link = NULL; 
+   if(n == 1){
+      temp1->link = head;
+      head = temp1;
       return;
    } 
-   struct Node* temp2 = (struct Node*) malloc(sizeof(struct Node)); 
+   Node* temp2 = head; 
    for(int i =0; i<=n-2; i++){
       temp2 = temp2->link;
    }
-   new_node->link = temp2->link;
-   temp2->link = new_node;
+   temp1->link = temp2->link;
+   temp2->link = temp1;
+  
 } 
-void dis(){
-    Node* temp = new Node();
-    temp = head;
-    while(temp->link != NULL){
+void display(){
+   Node* temp = head;
+   cout<<"List is"<<"\t";
+   while(temp != NULL){
         cout<<temp->data<<"\t";
         temp = temp->link;
-    }
+   }
+   cout<<"\n";
     
 }
-void del(int x);
 int main(){
-    head = NULL;
     insert(1, 1);
-    insert(2, 2);
-    insert(3, 3);
-    insert(4, 4);
-    insert(5, 5);
-    dis();
-    cout<<"sad";
+    insert(2, 1);
+    insert(3, 1);
+    insert(4, 1);
+    insert(5, 1);
+
+    display();
     return 0;
 }
