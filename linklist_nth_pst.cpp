@@ -26,6 +26,19 @@ void insert(int new_data, int n) {
    temp2->link = temp1;
    display();
 } 
+void reve(){
+   Node *next, *prev, *current;
+   current = head;
+   prev = NULL;
+   while(current != NULL){
+      next = current->link;
+      current->link = prev;
+      prev = current;
+      current = next;
+   }
+   head = prev;
+   display();
+}
 void remove(int n){
    Node* temp1 = head;
    for(int i; i<n-2 ; i++){
@@ -53,6 +66,7 @@ int main(){
    insert(4, 1);
    insert(5, 1);
    remove(2);
+   reve();
    
     return 0;
 }
