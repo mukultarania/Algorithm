@@ -10,17 +10,27 @@ void display(struct Node* head){
     display(head->link);
     //head = head->link;
 }
-struct Node* reve(struct Node* head){
-    struct Node* p = head;
-    if(p->link == NULL){
-        head = p;
-        return head;
+// struct Node* reve(struct Node* head){
+//     struct Node* p = head;
+//     if(p->link == NULL){
+//         head = p;
+//         return head;
+//     }
+//     reve(p->link);
+//     struct Node* temp = p->link;
+//     temp->link = p;
+//     p->link = NULL;.
+// }
+struct Node *reve(struct Node *head) {
+    if (head != NULL && head->link != NULL) {
+        struct Node *first = head;
+        struct Node *p = head = reve(head->link);
+        while (p->link != NULL)
+            p = p->link;
+        first->link = NULL;  // unlink the first node
+        p->link = first;     // append the first node
     }
-    reve(p->link);
-    struct Node* temp = p->link;
-    temp->link = p;
-    p->link = NULL;
-
+    return head;
 }
 struct Node* insert(struct Node* head, int new_data) { 
    Node* new_node = new Node(); 
