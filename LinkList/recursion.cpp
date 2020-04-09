@@ -6,11 +6,21 @@ struct Node{
 };
 void display(struct Node* head){
     if(head == NULL){return;}
-    display(head->link);
     cout<<head->data<<"\t";
+    display(head->link);
     //head = head->link;
-    
-    
+}
+struct Node* reve(struct Node* head){
+    struct Node* p = head;
+    if(p->link == NULL){
+        head = p;
+        return head;
+    }
+    reve(p->link);
+    struct Node* temp = p->link;
+    temp->link = p;
+    p->link = NULL;
+
 }
 struct Node* insert(struct Node* head, int new_data) { 
    Node* new_node = new Node(); 
@@ -26,6 +36,8 @@ int main(){
     head = insert(head, 3);
     head = insert(head, 4);
     cout<<"The linked list is: ";
+    //display(head);
+    head = reve(head);
     display(head);
-
+    return 0;
 }
