@@ -11,7 +11,7 @@ void insert(int new_data) {
    new_node->data = new_data; 
    new_node->next = head; 
    head = new_node; 
-    cout<<"The linked list is: ";
+   cout<<"The linked list is: ";
    display();
 } 
 void display() { 
