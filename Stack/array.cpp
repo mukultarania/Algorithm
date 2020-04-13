@@ -2,10 +2,9 @@
 using namespace std;
 #define MAX_SIZE 101 
 class Stack{
-    protected:
+    private:
     int A[MAX_SIZE];
     
-
     public:
     int top;
     Stack(){
