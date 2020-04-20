@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 struct Node {
     int data;
@@ -51,6 +52,10 @@ int FindMax(Node* root){
 	else if(root->right == NULL) return root->data;
 	return FindMax(root->right);
 }
+int FindHT(Node* root){
+	if(root == NULL) return -1;
+	return( max(FindHT(root->left), FindHT(root->right)) +1);
+}
 int main(){
     Node* root = NULL;
     root = Insert(root,15);	
@@ -59,6 +64,8 @@ int main(){
 	root = Insert(root,25);
 	root = Insert(root,8);
 	root = Insert(root,12);
+	root = Insert(root,50);
+	root = Insert(root,51);
 	// Ask user to enter a number.  
 	int number;
 	cout<<"Enter number be searched\n";
@@ -68,4 +75,5 @@ int main(){
 	else cout<<"Not Found\n";
 	cout<<"Minimum Element\t"<<FindMin(root)<<endl;
 	cout<<"Maximum Element\t"<<FindMax(root)<<endl;
+	cout<<"Height\t"<<FindHT(root)<<endl;
 }
