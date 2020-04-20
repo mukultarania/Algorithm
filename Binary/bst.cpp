@@ -11,8 +11,9 @@ Node* getNode(int i, Node* root){
     temp->left = temp->right = NULL;
     return temp;
 }
+
+//Insert Element in BST
 Node* Insert(Node* root, int data){
-    
 if(root == NULL){
         root = getNode(data, root);
     } else if(data <= root->data){
@@ -22,6 +23,8 @@ if(root == NULL){
     }
     return root;
 }
+
+//Searching a data in BST
 bool Search(Node* root,int data) {
 	if(root == NULL) {
 		return false;
@@ -35,6 +38,18 @@ bool Search(Node* root,int data) {
 	else {
 		return Search(root->right,data);
 	}
+}
+
+// Finding Min and Max Element
+int FindMin(Node* root){
+	if(root == NULL) return -1;
+	else if(root->left == NULL) return root->data;
+	return FindMin(root->left);
+}
+int FindMax(Node* root){
+	if(root == NULL) return -1;
+	else if(root->right == NULL) return root->data;
+	return FindMax(root->right);
 }
 int main(){
     Node* root = NULL;
@@ -51,4 +66,6 @@ int main(){
 	//If number is found, print "FOUND"
 	if(Search(root,number) == true) cout<<"Found\n";
 	else cout<<"Not Found\n";
+	cout<<"Minimum Element\t"<<FindMin(root)<<endl;
+	cout<<"Maximum Element\t"<<FindMax(root)<<endl;
 }
