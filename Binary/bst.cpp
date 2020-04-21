@@ -1,5 +1,6 @@
 #include<iostream>
 #include<algorithm>
+#include<queue>
 using namespace std;
 struct Node {
     int data;
@@ -56,6 +57,38 @@ int FindHT(Node* root){
 	if(root == NULL) return -1;
 	return( max(FindHT(root->left), FindHT(root->right)) +1);
 }
+//BFS of Binary Search Tree
+void LevelOrder(Node* root){
+	if(root == NULL) return;
+	queue<Node*> Q;
+	Q.push(root);
+	while(!Q.empty()){
+		Node* current = Q.front();
+		Q.pop();
+		cout<<current->data<<"\t";
+		if(current->left != NULL) Q.push(current->left);
+		if(current->right != NULL) Q.push(current->right);
+	}
+}
+void PreOrder(Node* root){
+	if(root == NULL) return;
+	cout<<root->data<<"\t";
+	PreOrder(root->left);
+	PreOrder(root->right);
+}
+void PostOrder(Node* root){
+	if(root == NULL) return;
+	PostOrder(root->left);
+	PostOrder(root->right);
+	cout<<root->data<<"\t";
+}
+void InOrder(Node* root){
+	if(root == NULL) return;
+	InOrder(root->left);
+	cout<<root->data<<"\t";
+	InOrder(root->right);
+	
+}
 int main(){
     Node* root = NULL;
     root = Insert(root,15);	
@@ -76,4 +109,8 @@ int main(){
 	cout<<"Minimum Element\t"<<FindMin(root)<<endl;
 	cout<<"Maximum Element\t"<<FindMax(root)<<endl;
 	cout<<"Height\t"<<FindHT(root)<<endl;
+	LevelOrder(root);
+	cout<<"\nPreorder\t"; PreOrder(root);
+	cout<<"\nPostorder\t"; PostOrder(root);
+	cout<<"\nInorder"<<"\t"; InOrder(root);
 }
