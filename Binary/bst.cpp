@@ -54,11 +54,14 @@ int FindMax(Node* root){
 	else if(root->right == NULL) return root->data;
 	return FindMax(root->right);
 }
+
+// Finding Height of BST
 int FindHT(Node* root){
 	if(root == NULL) return -1;
 	return( max(FindHT(root->left), FindHT(root->right)) +1);
 }
-//BFS of Binary Search Tree
+
+//BFS for Binary Search Tree
 void LevelOrder(Node* root){
 	if(root == NULL) return;
 	queue<Node*> Q;
@@ -71,6 +74,8 @@ void LevelOrder(Node* root){
 		if(current->right != NULL) Q.push(current->right);
 	}
 }
+
+// DFS for BST
 void PreOrder(Node* root){
 	if(root == NULL) return;
 	cout<<root->data<<"\t";
@@ -95,6 +100,8 @@ Node* Min(Node* root)
 	while(root->left != NULL) root = root->left;
 	return root;
 }
+
+//To Delete a Node in BST
 struct Node* Delete(struct Node *root, int data) {
 	if(root == NULL) return root; 
 	else if(data < root->data) root->left = Delete(root->left,data);
@@ -126,6 +133,36 @@ struct Node* Delete(struct Node *root, int data) {
 	}
 	return root;
 }
+
+//Function to find some data in the tree
+Node* Find(Node*root, int data) {
+	if(root == NULL) return NULL;
+	else if(root->data == data) return root;
+	else if(root->data < data) return Find(root->right,data);
+	else return Find(root->left,data);
+}
+
+Node* Getsuccessor(struct Node* root,int data) {
+	// Search the Node - O(h)
+	struct Node* current = Find(root,data);
+	if(current == NULL) return NULL;
+	if(current->right != NULL) {  //Case 1: Node has right subtree
+		return Min(current->right); // O(h)
+	}
+	else {   //Case 2: No right subtree  - O(h)
+		struct Node* successor = NULL;
+		struct Node* ancestor = root;
+		while(ancestor != current) {
+			if(current->data < ancestor->data) {
+				successor = ancestor; // so far this is the deepest node for which current node is in left
+				ancestor = ancestor->left;
+			}
+			else
+				ancestor = ancestor->right;
+		}
+		return successor;
+	}
+}
 int main(){
 	int number;
 	char c = 'y';
@@ -151,6 +188,7 @@ int main(){
 		cout<<"7 . Traversal Post Order"<<endl;
 		cout<<"8 . BFS of BST"<<endl;
 		cout<<"9 . Delete Element from BST"<<endl;
+		cout<<"10 . InOrder Succesor"<<endl;
 		cin>>i;
 		switch(i){
 			case 1:
@@ -184,6 +222,12 @@ int main(){
 			cout<<"Enter Element to delete\n";
 			cin>>del;
 			Delete(root, del);
+			break;
+			case 10:
+			Node* successor = Getsuccessor(root,8);
+			if(successor == NULL) cout<<"No successor Found\n";
+			else
+			cout<<"Successor is "<<successor->data<<"\n";
 			break;
 		}
 		cout<<"\nContinue..... (y,n)\t";
